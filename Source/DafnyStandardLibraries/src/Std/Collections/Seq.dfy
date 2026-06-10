@@ -316,7 +316,7 @@ module Std.Collections.Seq {
 
   /* Returns Some(i), if an element satisfying p occurs at least once in a sequence, and i is
     the index of the first such occurrence. Otherwise the return is None. */
-  opaque function IndexByOption<T(==)>(xs: seq<T>, p: T -> bool): (o: Option<nat>)
+  opaque function IndexByOption<T>(xs: seq<T>, p: T -> bool): (o: Option<nat>)
     ensures if o.Some? then o.value < |xs| && p(xs[o.value]) &&
                             forall j :: 0 <= j < o.value ==> !p(xs[j])
             else forall x <- xs ::!p(x)
